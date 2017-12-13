@@ -1,0 +1,12 @@
+#! /bin/sh
+
+set -e
+set -u
+set -x
+
+src=`coolpkg-fetch-git "https://github.com/oridb/mc" mc 9543bdfe516ddde6d347bffed6a99c9ec5c0c40b`
+cp -r $src/mc .
+cd mc
+./configure --prefix=$out/
+make bootstrap CFLAGS="-g"
+make install CFLAGS="-g"
