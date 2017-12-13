@@ -1,0 +1,14 @@
+#! /bin/sh
+
+set -e
+set -u
+set -x
+
+gobootstrap=`coolpkg-build $coolpkgdir/go1.4.coolpkg`
+export GOROOT_BOOTSTRAP=$gobootstrap/go/
+
+src=`coolpkg-fetch-git "https://github.com/golang/go" go $1`
+cd $out/
+cp -r $src/go .
+cd ./go/src
+./make.bash
