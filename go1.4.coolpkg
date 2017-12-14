@@ -1,10 +1,10 @@
+.dep src ./fetch-git.coolpkg https://github.com/golang/go go 4d5426a570c2820c5894a61b52e3dc147e4e7925
 #! /bin/sh
 
 set -e
 set -u
 set -x
 
-src=`coolpkg-fetch-git "https://github.com/golang/go" go 4d5426a570c2820c5894a61b52e3dc147e4e7925`
 cd $out/
 cp -r $src/go .
 cd ./go/src

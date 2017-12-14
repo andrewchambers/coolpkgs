@@ -1,13 +1,13 @@
+.dep gobootstrap ./go1.4.coolpkg
+.dep src ./fetch-git.coolpkg https://github.com/golang/go go 5476967b1a3d29fef4061999c00cadbec19ac0e3
 #! /bin/sh
 
 set -e
 set -u
 set -x
 
-gobootstrap=`coolpkg-build $coolpkgs/go1.4.coolpkg`
 export GOROOT_BOOTSTRAP=$gobootstrap/go/
 
-src=`coolpkg-fetch-git "https://github.com/golang/go" go 5476967b1a3d29fef4061999c00cadbec19ac0e3`
 cd $out/
 cp -r $src/go .
 cd ./go/src

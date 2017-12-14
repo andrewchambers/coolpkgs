@@ -1,0 +1,14 @@
+.dep mc ./mc.coolpkg
+.dep src ../fetch-git.coolpkg https://github.com/andrewchambers/ddmin ddmin 5720f16497376257c1e573aa7442a34ff685aa45
+#! /bin/sh
+
+set -e
+set -u
+set -x
+
+cp -r $src/ddmin .
+cd ddmin
+export PATH=$PATH:$mc/bin/
+mbld
+mkdir -p $out/bin/
+cp obj/ddmin $out/bin/
