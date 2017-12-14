@@ -1,0 +1,15 @@
+#! /bin/sh
+
+set -e
+set -u
+set -x
+
+mc=`coolpkg-build $coolpkgs/myrddin/mc.coolpkg`
+libtermdraw=`coolpkg-build $coolpkgs/myrddin/libtermdraw.coolpkg`
+src=`coolpkg-fetch-git "git://git.eigenstate.org/ori/irc.myr.git" ircmyr c9e17fdc66569be9726a7ee887d23a2d80f04d4e`
+cp -r $src/ircmyr .
+cd ircmyr
+export PATH=$PATH:$mc/bin/
+mbld -I $libtermdraw/lib/myr/ 
+mkdir -p $out/bin/
+cp obj/irc.myr $out/bin/

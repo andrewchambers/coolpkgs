@@ -1,0 +1,14 @@
+#! /bin/sh
+
+set -e
+set -u
+set -x
+
+mc=`coolpkg-build $coolpkgs/myrddin/mc.coolpkg`
+src=`coolpkg-fetch-git "git://git.eigenstate.org/npnth/libtermdraw.git" libtermdraw 9c78f15865ee942bdfa6159ffcf1847efbafc7d9`
+cp -r $src/libtermdraw .
+cd libtermdraw
+export PATH=$PATH:$mc/bin/
+mbld
+mkdir -p $out/lib/myr/
+cp obj/libtermdraw.* $out/lib/myr/
