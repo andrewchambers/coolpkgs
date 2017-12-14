@@ -1,0 +1,12 @@
+.dep src ./fetch-git.coolpkg  git://c9x.me/qbe.git  qbe 39b1f468b09d94cac6ec65a8c0fbc210e3c9989e
+#! /bin/sh
+
+set -e
+set -u
+set -x
+
+cp -r $src/qbe .
+cd ./qbe/
+gmake
+mkdir -p $out/bin
+cp obj/qbe $out/bin/qbe
