@@ -1,0 +1,11 @@
+#! /bin/sh
+
+set -e
+set -u
+set -x
+
+cd $out
+wget $1
+t=`ls *`
+echo "SHA1 ($t) = $2" > SHASUM
+sha1 -c SHASUM

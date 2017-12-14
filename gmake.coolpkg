@@ -1,0 +1,13 @@
+.dep src ./fetch.coolpkg http://ftp.gnu.org/gnu/make/make-4.2.tar.gz 0ae8f44ad73e66d8f7b91e7e2e39ed8a8f2c7428
+#! /bin/sh
+
+set -e
+set -u
+set -x
+
+tar xvzf $src/*.tar.gz 
+cd ./make*/
+./configure
+make
+mkdir -p $out/bin
+cp make $out/bin/gmake
