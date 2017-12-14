@@ -5,7 +5,7 @@ set -e
 set -u
 set -x
 
-cp -r $src/qbe .
+cp -R $src/qbe .
 cd ./qbe/
 gmake
 mkdir -p $out/bin

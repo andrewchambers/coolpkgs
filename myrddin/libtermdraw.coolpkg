@@ -6,7 +6,7 @@ set -e
 set -u
 set -x
 
-cp -r $src/libtermdraw .
+cp -R $src/libtermdraw .
 cd libtermdraw
 export PATH=$PATH:$mc/bin/
 mbld

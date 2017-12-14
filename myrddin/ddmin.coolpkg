@@ -6,7 +6,7 @@ set -e
 set -u
 set -x
 
-cp -r $src/ddmin .
+cp -R $src/ddmin .
 cd ddmin
 export PATH=$PATH:$mc/bin/
 mbld
