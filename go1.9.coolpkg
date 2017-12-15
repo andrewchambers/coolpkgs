@@ -15,3 +15,7 @@ cd $out/
 cp -r $src/go .
 cd ./go/src
 ./make.bash
+
+cd $out
+mkdir bin
+ln -s $out/go/bin/go $out/bin/go
