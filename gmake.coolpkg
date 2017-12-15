@@ -1,13 +1,18 @@
-.dep src ./fetch.coolpkg http://ftp.gnu.org/gnu/make/make-4.2.tar.gz 0ae8f44ad73e66d8f7b91e7e2e39ed8a8f2c7428
+.dep src ${builtins}/fetch.coolpkg http://ftp.gnu.org/gnu/make/make-4.2.tar.gz 0ae8f44ad73e66d8f7b91e7e2e39ed8a8f2c7428
+.dep bootstrap ${builtins}/bootstrap.coolpkg
 #! /bin/sh
 
 set -e
 set -u
 set -x
 
+source $bootstrap/setup.env
+
 tar xvzf $src/*.tar.gz 
 cd ./make*/
 ./configure
-make
+# build with the bootstrap make
+# so we can use this in stdenv.coolpkg
+bootstrap_coolpkg_make
 mkdir -p $out/bin
 cp make $out/bin/gmake

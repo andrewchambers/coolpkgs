@@ -1,0 +1,14 @@
+.dep stdenv ../stdenv.coolpkg
+.dep mc ./mc.coolpkg
+#! /bin/sh
+
+set -e
+set -u
+set -x
+
+source $stdenv/setup.env
+
+coolpkg_merge_env $stdenv
+coolpkg_merge_env $mc
+
+echo "export PATH=$out/bin:\$PATH" > $out/setup.env

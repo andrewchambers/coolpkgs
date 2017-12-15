@@ -1,15 +1,16 @@
-.dep mc ./mc.coolpkg
+.dep stdenv ./myrddin-stdenv.coolpkg
 .dep libtermdraw ./libtermdraw.coolpkg
-.dep src ../fetch-git.coolpkg git://git.eigenstate.org/ori/irc.myr.git ircmyr c9e17fdc66569be9726a7ee887d23a2d80f04d4e
+.dep src ${builtins}/fetch-git.coolpkg git://git.eigenstate.org/ori/irc.myr.git ircmyr c9e17fdc66569be9726a7ee887d23a2d80f04d4e
 #! /bin/sh
 
 set -e
 set -u
 set -x
 
+source $stdenv/setup.env
+
 cp -R $src/ircmyr .
 cd ircmyr
-export PATH=$PATH:$mc/bin/
 mbld -I $libtermdraw/lib/myr/ 
 mkdir -p $out/bin/
 cp obj/irc.myr $out/bin/

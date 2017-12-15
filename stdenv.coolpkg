@@ -1,0 +1,14 @@
+.dep bootstrap ${builtins}/bootstrap.coolpkg
+.dep gmake ./gmake.coolpkg
+#! /bin/sh
+
+set -e
+set -u
+set -x
+
+source $bootstrap/setup.env
+
+coolpkg_merge_env $bootstrap
+coolpkg_merge_env $gmake
+
+echo "export PATH=$out/bin:\$PATH" > $out/setup.env

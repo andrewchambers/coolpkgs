@@ -1,12 +1,15 @@
-.dep src ../fetch-git.coolpkg https://github.com/oridb/mc mc 9543bdfe516ddde6d347bffed6a99c9ec5c0c40b
+.dep stdenv ../stdenv.coolpkg
+.dep src ${builtins}/fetch-git.coolpkg https://github.com/oridb/mc mc 9543bdfe516ddde6d347bffed6a99c9ec5c0c40b
 #! /bin/sh
 
 set -e
 set -u
 set -x
 
+source $stdenv/setup.env
+
 cp -R $src/mc .
 cd mc
 ./configure --prefix=$out/
-make bootstrap CFLAGS="-g"
-make install CFLAGS="-g"
+gmake bootstrap CFLAGS="-g"
+gmake install CFLAGS="-g"
