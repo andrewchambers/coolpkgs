@@ -1,0 +1,15 @@
+.dep stdenv ./stdenv.coolpkg
+.dep src ${builtins}/fetch.coolpkg https://cmake.org/files/v3.10/cmake-3.10.1.tar.gz 5f4074aa9ee7101d9d24eb0e2de182e2650f6b30
+
+#! /bin/sh
+
+set -e
+set -u
+set -x
+
+source $stdenv/setup.env
+
+tar xvzf $src/*.tar.gz 
+cd ./cmake*/
+./configure --prefix=$out
+gmake install
